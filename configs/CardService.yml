@@ -1,0 +1,5 @@
+server.port: 8803
+
+spring:
+  config.name: CardService
+

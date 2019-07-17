@@ -21,6 +21,8 @@
         <module>card-service</module>
         <module>processing-service</module>
         <module>client-service</module>
+        <module>server-proxy-zuul</module>
+        <module>server-config</module>
     </modules>
 
     <properties>

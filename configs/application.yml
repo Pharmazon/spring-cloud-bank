@@ -1,10 +1,3 @@
-spring:
-  application:
-    name: CardService
-
-server:
-  port: 8803
-
 eureka:
   client:
     fetchRegistry: true

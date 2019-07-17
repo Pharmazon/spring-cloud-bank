@@ -1,9 +1,7 @@
 spring:
-  application:
-    name: Zuul
+  config.name: ZuulServer
 
-server:
-  port: 8700
+server.port: 8700
 
 zuul:
   ignoredServices: '*'

@@ -1,0 +1,25 @@
+server.port: 8600
+
+spring.application.name: ConfigServer
+
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        bootstrap: true
+#        git:
+#          force-pull: true
+#          uri: https://github.com/Pharmazon/spring-cloud-bank.git
+#          #          search-paths: 'configs/,configs/*,/configs,/configs/'
+#          search-paths: configs
+
+spring:
+  cloud:
+    config:
+      server:
+        bootstrap: true
+        git:
+          force-pull: true
+#          uri: https://github.com/Pharmazon/spring-cloud-bank.git
+          uri: file:./configs
+#          searchPaths: '/configs,/configs/,/configs/*,configs,configs/,configs/*'
