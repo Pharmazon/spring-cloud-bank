@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class ProcessingRest {
+public class ProcessingRestController {
 
     @Autowired
     private ProcessingRepository repo;
@@ -34,7 +34,8 @@ public class ProcessingRest {
     }
 
     @RequestMapping("/checkout/{card}")
-    public boolean checkout(@PathVariable String card, @RequestParam BigDecimal sum) {
+    public boolean checkout(@PathVariable String card,
+                            @RequestParam BigDecimal sum) {
         ProcessingEntity pe = repo.findByCard(card);
         if (pe == null) {
             return false;
