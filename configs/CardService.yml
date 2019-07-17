@@ -1,5 +1,3 @@
 server.port: 8803
-
-spring:
-  config.name: CardService
+spring.application.name: CardService
 

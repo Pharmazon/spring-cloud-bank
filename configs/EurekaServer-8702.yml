@@ -1,5 +1,5 @@
 server.port: 8702
-
+spring.application.name: EurekaServer
 eureka:
   client:
     registerWithEureka: true

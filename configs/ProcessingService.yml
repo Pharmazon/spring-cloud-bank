@@ -1,16 +1,18 @@
 server.port: 8804
-
 spring:
-  config.name: ProcessingService
-
+  application.name: ProcessingService
   datasource:
     url: jdbc:h2:file:~/ProcessingService;DB_CLOSE_ON_EXIT=FALSE
     driverClassName: org.h2.Driver
     username: sa
     password:
-
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     #hibernate.ddl-auto: none
     #generate-ddl: false
     #properties.hibernate.hbm2ddl.auto: none
+  cloud:
+    config:
+      allowOverride: true
+      overrideNone: true
+      overrideSystemProperties: false

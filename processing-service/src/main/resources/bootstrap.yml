@@ -1,0 +1,4 @@
+spring:
+  application.name: ProcessingService
+  profiles.active: dev
+  cloud.config.uri: http://localhost:8600

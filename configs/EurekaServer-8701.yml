@@ -1,9 +1,9 @@
 server.port: 8701
-
+spring.application.name: EurekaServer
 eureka:
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl.defaultZone: http://localhost:8702/eureka
   server:
-    enableSelfPreservation: false
+    enable-self-preservation: false

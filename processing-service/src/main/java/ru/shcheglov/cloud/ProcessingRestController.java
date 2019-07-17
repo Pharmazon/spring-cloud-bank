@@ -26,6 +26,9 @@ public class ProcessingRestController {
     @RequestMapping("/issue/{accountId}")
     public String issueNewCard(@PathVariable Integer accountId) {
         final String card = cardServiceClient.createCard();
+        if (card == null) {
+            return "CARD_SERVICE_NOT_AVAILABLE";
+        }
         ProcessingEntity pe = new ProcessingEntity();
         pe.setCard(card);
         pe.setAccountId(accountId);
@@ -34,8 +37,7 @@ public class ProcessingRestController {
     }
 
     @RequestMapping("/checkout/{card}")
-    public boolean checkout(@PathVariable String card,
-                            @RequestParam BigDecimal sum) {
+    public boolean checkout(@PathVariable String card, @RequestParam BigDecimal sum) {
         ProcessingEntity pe = repo.findByCard(card);
         if (pe == null) {
             return false;

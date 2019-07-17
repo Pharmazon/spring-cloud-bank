@@ -1,0 +1,3 @@
+spring:
+  application.name: ZuulServer
+  cloud.config.uri: http://localhost:8600

@@ -19,6 +19,11 @@ public class ClientRestController {
     @Autowired
     private ClientRepository repo;
 
+    @RequestMapping("/greeting")
+    public String greetings() {
+        return "Hello from ClientService!";
+    }
+
     @RequestMapping("/create")
     public Client create(@RequestParam String name) {
         return dao.create(name);
