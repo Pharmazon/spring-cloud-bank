@@ -1,0 +1,6 @@
+logging:
+  level:
+    com:
+      netflix:
+        eureka: off
+        discovery: off
