@@ -1,0 +1,31 @@
+http://localhost:8700/routes
+
+http://localhost:8802/create?client_id=1
+
+http://localhost:8802/fund/1?sum=100
+
+http://localhost:8802/get/1
+
+http://localhost:8700/processing/get/1
+
+http://localhost:8804/issue/1
+
+copy card number
+
+stop card service
+
+http://localhost:8804/issue/1 -> CARD_SERVICE_NOT_AVAILABLE
+
+http://localhost:8804/get?account_id=1
+
+check that money are there
+
+http://localhost:8804/checkout/57004733997474011?sum=1
+
+true
+
+stop account service
+
+http://localhost:8804/checkout/57004733997474011?sum=1
+
+false

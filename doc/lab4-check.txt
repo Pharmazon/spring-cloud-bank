@@ -1,0 +1,66 @@
+1) create folder config-repo in root of project
+2) run
+	git init
+3) add file to config-repo:
+	application.yml
+this is common config for all app
+4) move Eureka config from microservices bootstrap.yml to application.yml:
+	eureka:
+	  client:
+		fetchRegistry: true
+		registerWithEureka: true
+		serviceUrl:
+		  defaultZone: http://localhost:8701/eureka,http://localhost:8702/eureka
+
+In all microservices and in Eureka pom add dependency to Config server:
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
+
+5) in Eureka create bootstrap.yml with its name and config server address:
+spring:
+  application:
+    name: Eureka
+
+spring.cloud.config.uri: http://localhost:8600
+
+6) in config-repo create 2 files for 2 Eureka profiles:
+Eureka-8701.yml:
+server:
+  port: 8701
+
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8702/eureka
+
+Eureka-8702.yml:
+server:
+  port: 8702
+
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8701/eureka
+
+Commit changes in git folder.
+
+7) Start config server
+8) Open in IDEA: Run->Edit Configurations
+create 2 Eureka configurations with VM options:
+config named Eureka-8701:
+VM options:
+-Dspring.profiles.active=8701
+
+config named Eureka-8702:
+VM options:
+-Dspring.profiles.active=8702
+
+9) Run Eureka-8701 and Eureka-8702
+10) Check that it is running on appropriate ports
