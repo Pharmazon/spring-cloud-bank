@@ -24,6 +24,7 @@
         <module>server-proxy-zuul</module>
         <module>server-config</module>
         <module>hystrix-dashboard</module>
+        <module>server-turbine</module>
     </modules>
 
     <properties>
