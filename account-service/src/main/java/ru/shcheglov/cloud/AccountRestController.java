@@ -18,6 +18,11 @@ public class AccountRestController {
     @Autowired
     private AccountRepository repo;
 
+    @RequestMapping("/greeting")
+    public String greetings() {
+        return "Hello from AccountService!";
+    }
+
     @RequestMapping("/create")
     public void create(@RequestParam("client_id") Integer clientId) {
         dao.create(clientId);

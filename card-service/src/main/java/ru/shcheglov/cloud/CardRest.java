@@ -14,4 +14,9 @@ public class CardRest {
     public String createNewCard() {
         return generator.generate();
     }
+
+    @RequestMapping("/greeting")
+    public String greetings() {
+        return "Hello from CardService!";
+    }
 }

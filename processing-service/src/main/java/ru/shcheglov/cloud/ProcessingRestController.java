@@ -1,5 +1,6 @@
 package ru.shcheglov.cloud;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,14 +15,23 @@ import java.util.Map;
 @RestController
 public class ProcessingRestController {
 
-    @Autowired
     private ProcessingRepository repo;
-
-    @Autowired
     private AccountServiceClient accountServiceClient;
+    private CardServiceClient cardServiceClient;
 
     @Autowired
-    private CardServiceClient cardServiceClient;
+    public ProcessingRestController(ProcessingRepository repo,
+                                    AccountServiceClient accountServiceClient,
+                                    CardServiceClient cardServiceClient) {
+        this.repo = repo;
+        this.accountServiceClient = accountServiceClient;
+        this.cardServiceClient = cardServiceClient;
+    }
+
+    @RequestMapping("/greeting")
+    public String greetings() {
+        return "Hello from ProcessingService!";
+    }
 
     @RequestMapping("/issue/{accountId}")
     public String issueNewCard(@PathVariable Integer accountId) {
@@ -37,7 +47,8 @@ public class ProcessingRestController {
     }
 
     @RequestMapping("/checkout/{card}")
-    public boolean checkout(@PathVariable String card, @RequestParam BigDecimal sum) {
+    public boolean checkout(@PathVariable String card,
+                            @RequestParam BigDecimal sum) {
         ProcessingEntity pe = repo.findByCard(card);
         if (pe == null) {
             return false;
@@ -54,4 +65,18 @@ public class ProcessingRestController {
         }
         return map;
     }
+
+    @HystrixCommand(fallbackMethod = "testFallback")
+    @RequestMapping("/test")
+    public String testHystrix(Boolean fail) {
+        if (Boolean.TRUE.equals(fail)) {
+            throw new RuntimeException();
+        }
+        return "OK";
+    }
+
+    private String testFallback(Boolean fail) {
+        return "FAILED";
+    }
+
 }

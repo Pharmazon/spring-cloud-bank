@@ -4,6 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
+/**
+ * GET http://localhost:8701
+ * GET http://localhost:8702
+ */
+
 @EnableEurekaServer
 @SpringBootApplication
 public class EurekaServer {
