@@ -14,7 +14,19 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.2.RELEASE</version>
     </parent>
-    
+
+<!--    <dependencyManagement>-->
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-dependencies</artifactId>-->
+<!--                <version>${release.train.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+<!--        </dependencies>-->
+<!--    </dependencyManagement>-->
+
     <modules>
         <module>server-eureka</module>
         <module>account-service</module>
@@ -25,6 +37,7 @@
         <module>server-config</module>
         <module>hystrix-dashboard</module>
         <module>server-turbine</module>
+        <module>server-zipkin</module>
     </modules>
 
     <properties>
@@ -32,11 +45,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring.cloud.version>2.1.2.RELEASE</spring.cloud.version>
+<!--        <release.train.version></release.train.version>-->
     </properties>
 
     <developers>
         <developer>
-            <id>shcheglov</id>
+            <id>pharmazon</id>
             <name>Alexey Shcheglov</name>
             <email>as.shcheglov@gmail.com</email>
         </developer>
